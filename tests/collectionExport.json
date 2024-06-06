@@ -1,0 +1,641 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "LBB Tests",
+    "collectionId": "1a248012-30df-42d8-88e0-6258bee40735",
+    "dateExported": "2024-06-06T14:13:38.420Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b823d2f1-8ea1-472e-acbb-96d378dfffdf",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "getTasksBeforeLogin",
+            "url": "http://localhost:3000/tasks",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-06T14:11:34.013Z",
+            "modified": "2024-06-06T14:11:34.013Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ]
+        },
+        {
+            "_id": "3f1aea7a-424a-4379-9b67-25965e2ede11",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "postTaskBeforeLogin",
+            "url": "http://localhost:3000/tasks",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-06-06T14:11:34.014Z",
+            "modified": "2024-06-06T14:11:34.014Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Project\",\n  \"description\": \"Test entry\",\n  \"done\": false,\n  \"dueDate\": \"2024-06-30\"\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 401 Unauthorized\", () => {\r",
+                            "    pm.response.to.have.status(401);\r",
+                            "});\r",
+                            "pm.test(\"Response message is correct\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('user is not authenticated');\r",
+                            "});"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "5fe9722e-7277-435f-b6ff-e6d4202f0440",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "deleteTaskBeforeLogin",
+            "url": "http://localhost:3000/tasks/2",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-06-06T14:11:34.015Z",
+            "modified": "2024-06-06T14:11:34.015Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 401 Unauthorized\", () => {\r",
+                            "    pm.response.to.have.status(401);\r",
+                            "});\r",
+                            "pm.test(\"Response message is correct\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('user is not authenticated');\r",
+                            "});"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "06132ba7-1cc5-45cf-81b0-5f4c3e9b6c73",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-06T14:11:34.016Z",
+            "modified": "2024-06-06T14:11:34.016Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\":\"zli\",\n  \"password\":\"zli1234\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d7593f23-7ac7-456e-96bc-29da8b2610f8",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "verify",
+            "url": "http://localhost:3000/verify",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-06-06T14:11:34.017Z",
+            "modified": "2024-06-06T14:11:34.017Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Verification message is correct\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('user is authenticated');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "55e2f7ae-d971-482f-93dd-9dbe470fd049",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "logout",
+            "url": "http://localhost:3000/logout",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-06-06T14:11:34.018Z",
+            "modified": "2024-06-06T14:11:34.018Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ]
+        },
+        {
+            "_id": "562c237b-3a1c-48f4-8270-510fe80bcadf",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "getOneTask",
+            "url": "http://localhost:3000/tasks/1",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-06-06T14:11:34.020Z",
+            "modified": "2024-06-06T14:11:34.020Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Correct task is returned\", () => {\r",
+                            "    let task = pm.response.json();\r",
+                            "    pm.expect(task.id).to.eql(1);\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "47b6cd1f-87b1-4a5d-add7-b4ba821e4582",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "patchTask",
+            "url": "http://localhost:3000/tasks/2",
+            "method": "PATCH",
+            "sortNum": 90000,
+            "created": "2024-06-06T14:11:34.021Z",
+            "modified": "2024-06-06T14:11:34.021Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"New task\",\n  \"description\": \"Task changed\",\n  \"done\": false,\n  \"dueDate\": \"2024-06-30\"\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Task is updated correctly\", () => {\r",
+                            "    let task = pm.response.json();\r",
+                            "    pm.expect(task.title).to.eql('New task');\r",
+                            "});"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "7bbf0c6e-3449-4a9a-86d2-a2ab37947df7",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "patchTaskDone",
+            "url": "http://localhost:3000/tasks/2",
+            "method": "PATCH",
+            "sortNum": 100000,
+            "created": "2024-06-06T14:11:34.022Z",
+            "modified": "2024-06-06T14:11:34.022Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"done\": true\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Task status updated to done\", () => {\r",
+                            "    let task = pm.response.json();\r",
+                            "    pm.expect(task.done).to.be.true;\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "dc2f04a6-b4ff-425b-896d-8b69b6d2fe75",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "postTask",
+            "url": "http://localhost:3000/tasks",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-06-06T14:11:34.023Z",
+            "modified": "2024-06-06T14:11:34.023Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Task\",\n  \"description\": \"Test entry\",\n  \"done\": false,\n  \"dueDate\": \"2024-06-30\"\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 201 Created\", () => {\r",
+                            "    pm.response.to.have.status(201);\r",
+                            "});\r",
+                            "pm.test(\"Correct response message\", () => {\r",
+                            "    let responseBody = pm.response.json();\r",
+                            "    pm.expect(responseBody.title).to.eql('Task');\r",
+                            "    pm.expect(pm.response.text()).to.include('created');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "74af7cfa-1152-415c-a0ff-93c288af5cb6",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "getTasks",
+            "url": "http://localhost:3000/tasks",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-06-06T14:11:34.024Z",
+            "modified": "2024-06-06T14:11:34.024Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "pm.test(\"Status code is 200 OK\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Correct tasks are returned\", () => {\r\n    let tasks = pm.response.json();\r\n    pm.expect(Array.isArray(tasks)).to.be.true;\r\n    pm.expect(tasks.length).to.be.above(0);\r\n});\r\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Correct tasks are returned\", () => {\r",
+                            "    let tasks = pm.response.json();\r",
+                            "    pm.expect(Array.isArray(tasks)).to.be.true;\r",
+                            "    pm.expect(tasks.length).to.be.above(0);\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d325bb3b-522d-4067-95bf-989fe616fcfb",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "failedLogin",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-06-06T14:11:34.025Z",
+            "modified": "2024-06-06T14:11:34.025Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\":\"ahwd\",\n  \"password\":\"eeeee\"\n}",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 401 Unauthorized\", () => {\r",
+                            "    pm.response.to.have.status(401);\r",
+                            "});\r",
+                            "pm.test(\"Login fails as expected\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('login failed');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "26c7a672-fc71-4f62-9911-dabfb2e5bf31",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "failedPostTask",
+            "url": "http://localhost:3000/tasks",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2024-06-06T14:11:34.026Z",
+            "modified": "2024-06-06T14:11:34.026Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"description\": \"Test entry\",\n  \"done\": false,\n  \"dueDate\": \"2024-06-30\"\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 422 Unprocessable Entity\", () => {\r",
+                            "    pm.response.to.have.status(422);\r",
+                            "});\r",
+                            "pm.test(\"Proper error message for incorrect task structure\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('task structure not right');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "f5ea5160-70c1-409e-bcab-da0fbebabf35",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "failedGetOneTask",
+            "url": "http://localhost:3000/tasks/993",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-06-06T14:11:34.027Z",
+            "modified": "2024-06-06T14:11:34.027Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 404 Not Found\", () => {\r",
+                            "    pm.response.to.have.status(404);\r",
+                            "});\r",
+                            "pm.test(\"Proper error message when task not found\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('task not found');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "d5c2c310-f221-4718-8897-52bd395456db",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "failedDeleteTask",
+            "url": "http://localhost:3000/tasks/641",
+            "method": "DELETE",
+            "sortNum": 160000,
+            "created": "2024-06-06T14:11:34.028Z",
+            "modified": "2024-06-06T14:11:34.028Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 404 Not Found\", () => {\r",
+                            "    pm.response.to.have.status(404);\r",
+                            "});\r",
+                            "pm.test(\"Correct error message when task not found\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('task not found');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "a1af24f7-3b48-4c85-9dbf-9915b2a9db51",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "deleteTask",
+            "url": "http://localhost:3000/tasks/2",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2024-06-06T14:11:34.029Z",
+            "modified": "2024-06-06T14:11:34.029Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 204 No Content\", () => {\r",
+                            "    pm.response.to.have.status(204);\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "c2efe648-b4eb-4c0d-a53c-bca79fd64185",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "failedPatchTask",
+            "url": "http://localhost:3000/tasks/879",
+            "method": "PATCH",
+            "sortNum": 180000,
+            "created": "2024-06-06T14:11:34.030Z",
+            "modified": "2024-06-06T14:11:34.030Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"New Task\",\n  \"description\": \"Task changed\",\n  \"done\": false,\n  \"dueDate\": \"2024-06-30\"\n}\n",
+                "form": []
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 404 Not Found\", () => {\r",
+                            "    pm.response.to.have.status(404);\r",
+                            "});\r",
+                            "pm.test(\"Proper error message when task not found\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('task not found');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "70b2873c-39e6-45e3-8986-f0b7dcecc60c",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "logoutAgain",
+            "url": "http://localhost:3000/logout",
+            "method": "DELETE",
+            "sortNum": 190000,
+            "created": "2024-06-06T14:11:34.031Z",
+            "modified": "2024-06-06T14:11:34.031Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 401 Unauthorized\", () => {\r",
+                            "    pm.response.to.have.status(401);\r",
+                            "});\r",
+                            "pm.test(\"User is not authenticated\", () => {\r",
+                            "    pm.expect(pm.response.text()).to.eql('user is not authenticated');\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "9a178764-42b2-464c-aab4-7f4513c857d6",
+            "colId": "1a248012-30df-42d8-88e0-6258bee40735",
+            "containerId": "",
+            "name": "getTasksAfterLogin",
+            "url": "http://localhost:3000/tasks",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-06-06T14:11:34.019Z",
+            "modified": "2024-06-06T14:11:34.019Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "pm.test(\"Status code is 200 OK\", () => {\r",
+                            "    pm.response.to.have.status(200);\r",
+                            "});\r",
+                            "pm.test(\"Correct tasks are returned\", () => {\r",
+                            "    let tasks = pm.response.json();\r",
+                            "    pm.expect(Array.isArray(tasks)).to.be.true;\r",
+                            "    pm.expect(tasks.length).to.be.above(0);\r",
+                            "});\r",
+                            ""
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "ref": "Y_N1fqtjKP0wsJFR32av3AmOMfyzQV4lDsOwv9AtjKb3LATxRiXO3sSiXoVrUNDEmNdJcfv9rAVA-BWDVYxlug"
+}
