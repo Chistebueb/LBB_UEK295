@@ -10,7 +10,7 @@ This Project was created by Roan Ratering for the "ZLI Leistungsbeurteilung: Ele
 Ensure that Node.js is installed on your system. Download it from the Node.js official website.
 ## Installation
 Clone the repository to your machine and install the dependencies:<br />
-```git clone https://github.com/Chistebueb/LBB_UEK295<br />cd LBB_UEK295<br />npm install```
+```git clone https://github.com/Chistebueb/LBB_UEK295```<br />```cd LBB_UEK295```<br />```npm install```
 ## Running the Application
 To start the application, run:<br />
 
