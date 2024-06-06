@@ -1,11 +1,23 @@
 # LBB_UEK295
-The "taskManager" API allows users to manage their tasks effectively through a series of HTTP endpoints that support creating, retrieving, updating, and deleting tasks. This Project was created for "ZLI 
-Leistungsbeurteilung: Element B Abgabe"
+The "taskManager" API allows users to manage their tasks effectively through a series of HTTP endpoints that support creating, retrieving, updating, and deleting tasks. This Project was created by Roan Ratering for the "ZLI Leistungsbeurteilung: Element B Abgabe"
 ## Features
 + User Authentication: Supports login and logout functionalities.
 + CRUD Operations: Users can create, read, update, and delete tasks.
 + API Documentation: Integrated Swagger UI based on the OpenAPI specification.
 + Session Management: Manages user sessions with cookie-based authentication.
+## Prerequisites
+Ensure that Node.js is installed on your system. Download it from the Node.js official website.
+## Installation
+Clone the repository to your machine and install the dependencies:
+```git clone https://github.com/Chistebueb/LBB_UEK295```
+```cd LBB_UEK295```
+```npm install```
+## Running the Application
+To start the application, run:
+
+```node scripts/taskManager.js```
+The server starts on port 3000 by default.
+
 ## NPM Dependencies
 + express: Framework for handling and routing HTTP requests.
 + body-parser: Middleware to parse incoming request bodies.
@@ -15,3 +27,7 @@ Leistungsbeurteilung: Element B Abgabe"
 + express-openapi-validator: Middleware for request and response validation based on the OpenAPI specification.
 + fs: Node.js core module to handle the file system.
 + yaml: Module to parse YAML files.
+```npm install express body-parser swagger-ui-express express-session cookie-parser express-openapi-validator fs yaml```
+## API Documentation
+View the API documentation through the Swagger UI:
+```http://localhost:3000/api-docs```
