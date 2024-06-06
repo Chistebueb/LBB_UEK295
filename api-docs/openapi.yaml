@@ -1,0 +1,177 @@
+#the code in this file is written by ChatGPT
+openapi: 3.0.0
+info:
+  title: Task Management API
+  version: 1.0.0
+paths:
+  /tasks:
+    get:
+      summary: Retrieves all tasks
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Creates a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskInput'
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '401':
+          description: Unauthorized access
+        '422':
+          description: Invalid task structure
+  /tasks/{id}:
+    get:
+      summary: Retrieves a task by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A specific task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+        '401':
+          description: Unauthorized access
+    patch:
+      summary: Updates a task by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskInput'
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+        '401':
+          description: Unauthorized access
+    delete:
+      summary: Deletes a task by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Task deleted successfully
+        '404':
+          description: Task not found
+        '401':
+          description: Unauthorized access
+  /login:
+    post:
+      summary: Authenticates a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: Logged in successfully
+        '401':
+          description: Login failed
+  /verify:
+    get:
+      summary: Verifies if user is authenticated
+      responses:
+        '200':
+          description: User is authenticated
+        '401':
+          description: User is not authenticated
+  /logout:
+    delete:
+      summary: Logs out the current user
+      responses:
+        '200':
+          description: Logged out successfully
+        '401':
+          description: Unauthorized access
+components:
+  schemas:
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - done
+        - dueDate
+        - createdAt
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        done:
+          type: boolean
+        dueDate:
+          type: string
+        createdAt:
+          type: string
+    TaskInput:
+      type: object
+      required:
+        - title
+        - description
+        - done
+        - dueDate
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        done:
+          type: boolean
+        dueDate:
+          type: string
+    Login:
+      type: object
+      required:
+        - user
+        - password
+      properties:
+        user:
+          type: string
+        password:
+          type: string
