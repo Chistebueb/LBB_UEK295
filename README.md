@@ -12,8 +12,7 @@ Ensure that Node.js is installed on your system. Download it from the Node.js of
 Clone the repository to your machine and install the dependencies:<br />
 ```git clone https://github.com/Chistebueb/LBB_UEK295```<br />```cd LBB_UEK295```<br />```npm install```
 ## Running the Application
-To start the application, run:<br />
-
+To start the application, run:
 ```node scripts/taskManager.js```<br />
 The server starts on port 3000 by default.
 
@@ -26,7 +25,7 @@ The server starts on port 3000 by default.
 + express-openapi-validator: Middleware for request and response validation based on the OpenAPI specification.
 + fs: Node.js core module to handle the file system.
 + yaml: Module to parse YAML files.<br />
-```npm install express body-parser swagger-ui-express express-session cookie-parser express-openapi-validator fs yaml```
+```npm install express body-parser swagger-ui-express express-session cookie-parser express-openapi-validatorfs yaml```
 ## API Documentation
 View the API documentation through the Swagger UI:<br />
 ```http://localhost:3000/api-docs```
